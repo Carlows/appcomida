@@ -1,2 +1,4 @@
-app\packages 
-app\app\bin
+app/packages/
+app/app/bin/
+*.dll
+*.pdb
