@@ -25,13 +25,7 @@ namespace app.Models.Entities
 
     public class GoogleMapPoint
     {
-        public GoogleMapPoint(float longitud, float latitud)
-        {
-            this.Longitud = longitud;
-            this.Latitud = latitud;
-        }
-
-        public float Longitud { get; private set; }
-        public float Latitud { get; private set; }
+        public float Longitud { get; set; }
+        public float Latitud { get; set; }
     }
 }
