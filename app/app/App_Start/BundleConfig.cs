@@ -14,8 +14,8 @@ namespace app
             bundles.Add(new ScriptBundle("~/bundles/app")
                     .Include("~/Scripts/app/app.js")
                     .IncludeDirectory("~/Scripts/app/Controllers", "*.js")
-                    .IncludeDirectory("~/Scripts/app/Views", "*.js")
                     .IncludeDirectory("~/Scripts/app/Directives", "*.js")
+                    .IncludeDirectory("~/Scripts/app/Filters", "*.js")
                     .IncludeDirectory("~/Scripts/app/Services", "*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/vendor")
@@ -23,12 +23,12 @@ namespace app
                     .IncludeDirectory("~/Scripts/vendor", "*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-theme.css",
+                      "~/Content/Site.css"));
         }
     }
 }

@@ -215,7 +215,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -225,10 +224,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\Controllers\mainController.js" />
+    <Content Include="Scripts\app\Controllers\RegistroController.js" />
+    <Content Include="Scripts\app\Controllers\RegistrosController.js" />
+    <Content Include="Scripts\app\Filters\bolivares.js" />
+    <Content Include="Scripts\app\productos.html" />
+    <Content Include="Scripts\app\Services\RegistrosService.js" />
+    <Content Include="ViewsAngular\productos.html" />
     <Content Include="Scripts\vendor\angular-animate.js" />
     <Content Include="Scripts\vendor\angular-animate.min.js" />
     <Content Include="Scripts\vendor\angular-mocks.js" />
@@ -259,8 +263,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\Directives\" />
-    <Folder Include="Scripts\app\Services\" />
-    <Folder Include="Scripts\app\Views\" />
     <Folder Include="Views\Registros\" />
   </ItemGroup>
   <ItemGroup>

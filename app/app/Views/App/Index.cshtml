@@ -4,13 +4,42 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHANGE THIS LATER</title>
+    <title>Haz tu cola</title>
     @Styles.Render("~/Content/css")
-
+    <base href="/">
+    <meta name="fragment" content="!"> <!-- google rendering, you actually need to render the static pages :p -->
 </head>
-<body>    
-    <div class="container" ng-controller="mainController">
-        <strong ng-cloak>{{hello}}</strong>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">EncuentraTuCola</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/">Inicio</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12" ng-controller="mainController">
+        <div ng-view></div>
+    </div>
+
+    <div class="col-md-4 hidden-sm hidden-xs" ng-controller="mainController">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <label class="fixcolor">Aqui va a haber algo, no sé qué.</label>
+            </div>
+            <div class="panel-body">
+                {{hello}}
+            </div>
+        </div>
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")

@@ -13,6 +13,9 @@ namespace app
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //exclude template folder from routing
+            routes.IgnoreRoute("ViewsAngular/{*pathInfo}");
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
