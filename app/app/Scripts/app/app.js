@@ -1,4 +1,4 @@
-﻿var app = angular.module('mainApp', ['ngRoute'])
+﻿var app = angular.module('mainApp', ['ngRoute', 'uiGmapgoogle-maps'])
 
 app.constant("serverURL", "http://localhost:57916/Registros")
 
@@ -9,6 +9,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when("/", {
             controller: "RegistrosController",
             templateUrl: "ViewsAngular/productos.html"
+        })
+        .when("/nuevoRegistro", {
+            controller: "NuevoRegistroController",
+            templateUrl: "ViewsAngular/nuevoregistro.html"
         })
         .when("/registro/:registroID", {
             controller: "RegistroController",

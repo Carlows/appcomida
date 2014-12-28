@@ -1,5 +1,7 @@
 ﻿using app.Infrastructure.Repositories;
 using app.Models.Entities;
+using app.Models.ViewModels;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,12 +49,16 @@ namespace app.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Registro CreateRecord(Models.ViewModels.RegistroViewModel model)
+        public Registro CreateRecord(RegistroViewModel model)
         {
-            throw new NotImplementedException();
+            Registro regMapper = Mapper.Map<RegistroViewModel, Registro>(model);
+
+            var addedRecord = _db.Add(regMapper);
+
+            return addedRecord;
         }
 
-        public Registro UpdateRecord(Models.ViewModels.RegistroViewModel model)
+        public Registro UpdateRecord(RegistroViewModel model)
         {
             throw new NotImplementedException();
         }

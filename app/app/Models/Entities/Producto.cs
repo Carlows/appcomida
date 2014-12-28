@@ -8,6 +8,11 @@ namespace app.Models.Entities
 {
     public class Producto
     {
+        public Producto()
+        {
+            Regulado = false;
+        }
+
         [Key]
         public int Id { get; set; }
         public string Nombre { get; set; }

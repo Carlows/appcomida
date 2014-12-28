@@ -1,0 +1,21 @@
+﻿<form name="formProducto" novalidate ng-submit="setStep(2)">
+    <fieldset>
+        <legend>Producto</legend>
+        <div class="form-group">
+            <label>Nombre del producto</label>
+            <input name="name" type="text" class="form-control" required ng-model="currentData.Producto.Nombre" />
+        </div>
+        <div class="form-group">
+            <label>Precio del producto</label>
+            <input name="precio" type="number" class="form-control" required ng-model="currentData.Producto.Precio" />
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="regulado" type="checkbox"
+                       ng-model="currentData.Producto.Regulado">
+                El precio está regulado
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="formProducto.$invalid">Ir a paso 2</button> 
+    </fieldset>
+</form>

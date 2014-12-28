@@ -11,16 +11,16 @@ namespace app
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/vendor")
+                   .Include("~/Scripts/vendor/angular.js", "~/Scripts/vendor/lodash.js", "~/Scripts/vendor/angular-google-maps.js")
+                   .IncludeDirectory("~/Scripts/vendor", "*.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/app")
                     .Include("~/Scripts/app/app.js")
                     .IncludeDirectory("~/Scripts/app/Controllers", "*.js")
                     .IncludeDirectory("~/Scripts/app/Directives", "*.js")
                     .IncludeDirectory("~/Scripts/app/Filters", "*.js")
-                    .IncludeDirectory("~/Scripts/app/Services", "*.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/vendor")
-                    .Include("~/Scripts/vendor/angular.js")
-                    .IncludeDirectory("~/Scripts/vendor", "*.js"));
+                    .IncludeDirectory("~/Scripts/app/Services", "*.js"));           
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));

@@ -1,0 +1,27 @@
+﻿<div class="alert alert-danger" ng-show="data.error">
+    <label><strong>Hubo un error al agregar el registro.</strong></label>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <!-- fixthis, cambia el titulo-->
+        <label class="fixcolor"><strong>Agregar nuevo registro</strong></label>
+    </div>
+    <div class="panel-body">
+        <div ng-switch="currentStep">
+            <div ng-switch-when="1">
+                <div ng-include="'ViewsAngular/NuevoProducto/paso1.html'">
+                </div>
+            </div>
+            <div ng-switch-when="2">
+                <div ng-include="'ViewsAngular/NuevoProducto/paso2.html'">
+                </div>
+            </div>
+            <div ng-switch-when="3">
+                <div ng-include="'ViewsAngular/NuevoProducto/paso3.html'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

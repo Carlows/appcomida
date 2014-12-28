@@ -10,6 +10,17 @@ app.factory("registrosService", function ($http, $q, serverURL) {
             });
             
             return deferred.promise;
+        },
+        addNewRecord: function (newRecord) {
+            var deferred = $q.defer();
+
+            $http.post(serverURL + "/CreateRecord", newRecord).then(function (data) {
+                deferred.resolve(data);
+            }, function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
         }
     }
 });

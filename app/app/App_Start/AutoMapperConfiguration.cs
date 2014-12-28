@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using app.Models.Entities;
+using app.Models.ViewModels;
 
 namespace app.App_Start
 {
@@ -10,12 +12,14 @@ namespace app.App_Start
     {
         public static void Configure()
         {
-            //ConfigureUserMapping();
+            ConfigureMappings();
         }
 
-        private static void ConfigureUserMapping()
+        private static void ConfigureMappings()
         {
-            // this is how you configure each
+            Mapper.CreateMap<RegistroViewModel, Registro>().ReverseMap();
+            Mapper.CreateMap<ProductoViewModel, Producto>().ReverseMap();
+            Mapper.CreateMap<DireccionViewModel, Direccion>().ReverseMap();
         } 
     }
 }

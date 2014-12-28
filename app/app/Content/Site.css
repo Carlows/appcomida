@@ -1,5 +1,5 @@
 ﻿.fixcolor{
-    color:#000;
+    color:#fff;
 }
 
 .productoVotos{
@@ -23,3 +23,9 @@
 .valign{
     line-height: 80px;
 }
+
+.moremargin{
+    margin-bottom: 30px;
+}
+
+.angular-google-map-container { height: 500px; border-radius: 4px; margin-bottom:30px; }

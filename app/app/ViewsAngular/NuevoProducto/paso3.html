@@ -1,0 +1,17 @@
+﻿<fieldset>
+    <legend>Localizalo en el mapa</legend>
+    
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options'>
+        <!-- marker -->
+        <ui-gmap-marker coords="map.marker.coords" events="map.marker.events" options="map.marker.options" idkey="map.marker.id"></ui-gmap-marker>
+    </ui-gmap-google-map>
+
+    <div>
+        <div class="col-sm-4">
+            <button ng-click="setStep(2)" class="btn btn-primary btn-block">Volver a paso 2</button>
+        </div>
+        <div class="col-sm-3 col-sm-offset-5">
+            <button type="submit" class="btn btn-primary btn-block" ng-click="addNewRecord()">Finalizar</button>
+        </div>
+    </div>
+</fieldset>

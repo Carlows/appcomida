@@ -9,7 +9,7 @@
     <base href="/">
     <meta name="fragment" content="!"> <!-- google rendering, you actually need to render the static pages :p -->
 </head>
-<body>
+<body ng-controller="mainController">
     <div class="navbar navbar-inverse">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -17,29 +17,43 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/">EncuentraTuCola</a>
+            <a class="navbar-brand" href="/">EncuentraTuCola</a>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#/">Inicio</a></li>
+                <li ng-class="{ active: isActive('/') }"><a href="/">Inicio</a></li>
+                <li ng-class="{ active: isActive('/nuevoRegistro') }"><a href="/nuevoRegistro">Encontré una cola</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="col-md-6 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12" ng-controller="mainController">
-        <div ng-view></div>
-    </div>
-
-    <div class="col-md-4 hidden-sm hidden-xs" ng-controller="mainController">
+    <!-- solo se muestra en pantallas pequeñas -->
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 hidden-md hidden-lg" ng-hide="isActive('/nuevoRegistro')">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <label class="fixcolor">Aqui va a haber algo, no sé qué.</label>
             </div>
             <div class="panel-body">
-                {{hello}}
+                <p class="text-center"><strong>¿Encontraste una nueva cola?</strong></p> <a href="/nuevoRegistro" class="btn btn-lg btn-primary btn-block">PASA EL DATO</a>
             </div>
         </div>
+    </div>
 
+    <!-- columna de productos -->
+    <div class="col-md-6 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12">
+        <div ng-view></div>
+    </div>
+
+    <!-- solo se muestra en pantallas grandes -->
+    <div class="col-md-4 hidden-sm hidden-xs" ng-hide="isActive('/nuevoRegistro')">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <label class="fixcolor">Aqui va a haber algo, no sé qué.</label>
+            </div>
+            <div class="panel-body">
+                <p class="text-center"><strong>¿Encontraste una nueva cola?</strong></p> <a href="/nuevoRegistro" class="btn btn-lg btn-primary btn-block">PASA EL DATO</a>
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
