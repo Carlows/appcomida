@@ -24,9 +24,14 @@ namespace app.Infrastructure.Services
             return _db.GetAll().ToList();
         }
 
+        public IEnumerable<Registro> GetRecordsDescending()
+        {
+            return _db.GetAll().OrderByDescending(x => x.Creado);
+        }
+
         public Registro FindRecordById(int? id)
         {
-            throw new NotImplementedException();
+            return _db.GetById(id);
         }
 
         public IEnumerable<Registro> FindRecordsByCity(string city)

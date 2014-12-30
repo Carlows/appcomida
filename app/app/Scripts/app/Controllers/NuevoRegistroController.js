@@ -8,6 +8,10 @@ app.controller("NuevoRegistroController", function ($scope, $location, registros
         $scope.data = {};
         $scope.currentStep = 1;
         $scope.currentData = {};
+        $scope.currentData.Direccion = {};
+        $scope.currentData.Direccion.Position = {};
+        $scope.currentData.Direccion.Position.Latitud = 9.82743;
+        $scope.currentData.Direccion.Position.Longitud = -68.24695;
         $scope.estados = {};
         $scope.estados = helperService.getAllStates();
 
@@ -24,8 +28,7 @@ app.controller("NuevoRegistroController", function ($scope, $location, registros
 					        },
 					        options: { draggable: true },
 					        events: {
-					            dragend: function (marker, eventName, args) {
-					                $scope.currentData.Direccion.Position = {};
+					            dragend: function (marker, eventName, args) {					                
 					                $scope.currentData.Direccion.Position.Latitud = marker.getPosition().lat();
 					                $scope.currentData.Direccion.Position.Longitud = marker.getPosition().lng();
 					            }

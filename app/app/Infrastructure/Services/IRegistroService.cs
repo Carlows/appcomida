@@ -12,6 +12,7 @@ namespace app.Infrastructure.Services
     public interface IRegistroService
     {
         IEnumerable<Registro> GetAllRecords();
+        IEnumerable<Registro> GetRecordsDescending();
         Registro FindRecordById(int? id);
         IEnumerable<Registro> FindRecordsByCity(string city);
         IEnumerable<Registro> FindRecordsByState(string state);

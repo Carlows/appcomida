@@ -1,25 +1,27 @@
 ﻿<div class="alert alert-danger" ng-show="data.error">
-    Error ({{data.error.status}}). No se pudieron cargar los datos.
+    Error ({{data.error.data.error}}). No se pudieron cargar los datos.
 </div>
 
 <div class="panel panel-primary" ng-hide="data.error">
     <div class="panel-heading">
-        <span class="col-xs-2 text-center"></span>
-        <span class="col-xs-4 text-center">Producto</span>
-        <span class="col-xs-3 text-center">Estado</span>
-        <span class="col-xs-3 text-center">Precio</span>
-        <div class="clearfix"></div>
+        <strong>Agregados recientemente</strong>
     </div>
     <div class="panel-body">
         <div class="well text-center" style="margin-bottom: 0px;" ng-show="loadingContent"><strong>Cargando contenido...</strong></div>
-        <div class="" ng-repeat="registro in data.records">
+        <div class="texthidden" ng-repeat="registro in data.records">
             <div class="row box">
                 <div class="col-xs-2 text-center">
-                    <span class="productoVotos valign">{{registro.Votos}}</span>
+                    <span class="productoVotos">{{registro.Votos}}</span>
                 </div>
-                <div class="col-xs-4 productoNombre valign">{{registro.Producto.Nombre}}</div>
-                <div class="col-xs-3  productoDireccion text-center valign">{{registro.Direccion.Estado}}</div>
-                <div class="col-xs-3  productoPrecio text-center valign">{{registro.Producto.Precio | bolivares}}</div>
+                <div class="col-xs-7 productoNombre">
+                    <div class="row">
+                        <a ng-href="/registro/{{registro.Id}}">{{registro.Producto.Nombre}}</a>
+                    </div>
+                    <div class="row">
+                        <label>{{registro.Direccion.Estado}}</label>
+                    </div>
+                </div>
+                <div class="col-xs-3  productoPrecio text-center">{{registro.Producto.Precio | bolivares}}</div>
             </div>
         </div>
     </div>

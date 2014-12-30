@@ -21,6 +21,23 @@ app.factory("registrosService", function ($http, $q, serverURL) {
             });
 
             return deferred.promise;
+        },
+        getRecord: function (id) {
+            var deferred = $q.defer();
+
+            if (angular.isNumber(Number(id))) {
+                var query = serverURL + "/GetRecord/" + id;
+
+                $http.get(query).then(function (data) {
+                    deferred.resolve(data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+            } else {
+                deferred.reject("el id debe ser un numero");
+            }
+
+            return deferred.promise;
         }
     }
 });

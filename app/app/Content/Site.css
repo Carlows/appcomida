@@ -2,6 +2,19 @@
     color:#fff;
 }
 
+.recordVotos{
+    font-size:20px;
+}
+
+.recordPrecio{
+    font-size:16px;
+}
+
+.recordName{
+    font-size:16px;
+    margin-bottom:5px;
+}
+
 .productoVotos{
     font-size:28px;
     color: #4a6b82;
@@ -28,4 +41,92 @@
     margin-bottom: 30px;
 }
 
+.texthidden{
+    white-space: nowrap;
+	overflow: hidden;
+    word-wrap: break-word;
+}
+
 .angular-google-map-container { height: 500px; border-radius: 4px; margin-bottom:30px; }
+
+/* animaciones */
+.slideLeft{
+}
+
+.slideRight.ng-hide-add{
+    -webkit-animation:fadeLeave .5s ease;
+	-moz-animation:fadeLeave .5s ease;
+	animation:fadeLeave .5s ease;   
+}
+
+.slideRight.ng-hide-remove{
+    -webkit-animation:fadeEnter .5s ease;
+	-moz-animation:fadeEnter .5s ease;
+	animation:fadeEnter .5s ease;   
+}
+
+.slideLeft.ng-leave        {
+    position:absolute;
+    width:100%;
+    -webkit-animation:slideLeftLeave .3s ease-in;
+	-moz-animation:slideLeftLeave .3s ease-in;
+	animation:slideLeftLeave .3s ease-in;   
+}
+.slideLeft.ng-enter 		{  
+    position:absolute;
+    -webkit-animation:slideLeftEnter .3s ease-in;
+	-moz-animation:slideLeftEnter .3s ease-in;
+	animation:slideLeftEnter .3s ease-in;    
+}
+
+@-webkit-keyframes slideLeftLeave {
+	from { left: 0 }
+    to { left: -100% }
+}
+@-moz-keyframes slideLeftLeave {
+	from { left: 0 }
+    to { left: -100% }
+}
+@keyframes slideLeftLeave {
+	from { left: 0 }
+    to { left: -100% }
+}
+
+@-webkit-keyframes slideLeftEnter {
+	from { left: -100%; width: 0 }
+    to { left: 0; width: 100% }
+}
+@-moz-keyframes slideLeftEnter {
+	from { left: -100% }
+    to { left: 0 }
+}
+@keyframes slideLeftEnter {
+	from { left: -100% }
+    to { left: 0 }
+}
+
+@-webkit-keyframes fadeLeave {
+	from { opacity: 1 }
+    to { opacity: 0 }
+}
+@-moz-keyframes fadeLeave {
+	from { opacity: 1 }
+    to { opacity: 0 }
+}
+@keyframes fadeLeave {
+	from { opacity: 1 }
+    to { opacity: 0 }
+}
+
+@-webkit-keyframes fadeEnter {
+	from { opacity: 0 }
+    to { opacity: 1 }
+}
+@-moz-keyframes fadeEnter {
+	from { opacity: 0 }
+    to { opacity: 1 }
+}
+@keyframes fadeEnter {
+	from { opacity: 0 }
+    to { opacity: 1 }
+}

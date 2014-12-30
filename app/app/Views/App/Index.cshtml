@@ -10,6 +10,16 @@
     <meta name="fragment" content="!"> <!-- google rendering, you actually need to render the static pages :p -->
 </head>
 <body ng-controller="mainController">
+    <div id="fb-root"></div>
+    <script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <div class="navbar navbar-inverse">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -27,25 +37,13 @@
         </div>
     </div>
 
-    <!-- solo se muestra en pantallas pequeñas -->
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 hidden-md hidden-lg" ng-hide="isActive('/nuevoRegistro')">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <label class="fixcolor">Aqui va a haber algo, no sé qué.</label>
-            </div>
-            <div class="panel-body">
-                <p class="text-center"><strong>¿Encontraste una nueva cola?</strong></p> <a href="/nuevoRegistro" class="btn btn-lg btn-primary btn-block">PASA EL DATO</a>
-            </div>
-        </div>
-    </div>
-
     <!-- columna de productos -->
     <div class="col-md-6 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12">
-        <div ng-view></div>
+        <div class="slideLeft" ng-view></div>
     </div>
 
     <!-- solo se muestra en pantallas grandes -->
-    <div class="col-md-4 hidden-sm hidden-xs" ng-hide="isActive('/nuevoRegistro')">
+    <div class="col-md-4 hidden-sm hidden-xs slideRight" ng-hide="isActive('/nuevoRegistro')">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <label class="fixcolor">Aqui va a haber algo, no sé qué.</label>
@@ -60,5 +58,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/vendor")
     @Scripts.Render("~/bundles/app")
+
 </body>
 </html>

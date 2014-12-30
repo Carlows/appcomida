@@ -20,9 +20,38 @@ namespace app.Controllers
 
         public JsonResult GetAllRecords()
         {
-            var model = _registros.GetAllRecords();
+            var model = _registros.GetRecordsDescending();
 
             return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetRecord(int? id)
+        {
+            if(id == null)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { error = "Id es null" }, JsonRequestBehavior.AllowGet);
+            }
+
+            try
+            {
+                var record = _registros.FindRecordById(id);
+
+                if(record != null)
+                {
+                    return Json(record, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    return Json(new { error = "No se pudo encontrar el producto" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch(Exception e)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { error = "Hubo un error al encontrar el registro: " + e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpPost]
@@ -39,12 +68,12 @@ namespace app.Controllers
                 catch(Exception e)
                 {
                     Response.StatusCode = (int)HttpStatusCode.InternalServerError; 
-                    return Json(new { error = "Hubo un error al agregar el registro" });
+                    return Json(new { error = "Hubo un error al agregar el registro: " + e.Message });
                 }
             }
 
             // return error
-            Response.StatusCode = (int)HttpStatusCode.InternalServerError; 
+            Response.StatusCode = (int)HttpStatusCode.BadRequest; 
             return Json(new { error = "Hubo un error al agregar el registro" });
         }
 	}

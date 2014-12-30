@@ -1,0 +1,41 @@
+﻿<div class="alert alert-danger" ng-show="data.error">
+    Error ({{data.error.data.error}}). No se pudieron cargar los datos.
+</div>
+
+<div class="panel panel-primary" ng-hide="data.error">
+    <div class="panel-body">
+        <div class="well text-center" style="margin-bottom: 0px;" ng-show="loadingContent"><strong>Cargando contenido...</strong></div>        
+
+        <div class="row">
+            <div class="col-xs-3">
+                <span class="recordVotos">{{data.record.Votos}}</span>
+            </div>
+            <div class="col-xs-6 text-justify">
+                <p class="recordName">{{data.record.Producto.Nombre}}</p>
+                <p><strong>{{data.record.Direccion.Estado}}</strong> <span>{{data.record.Direccion.Ciudad}}</span></p>
+            </div>
+            <div class="col-xs-3 text-right">
+                <div class="">
+                    <span class="recordPrecio">{{data.record.Producto.Precio | bolivares}}</span>
+                </div>
+                <div class="">
+                    <label class="label" ng-class="{ 'label-success': regulado, 'label-danger': noRegulado }">{{data.record.Producto.Regulado | regulado}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row text-justify">
+            <div class="container-fluid">
+                <p>{{data.record.Direccion.DireccionLocal}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container-fluid">
+                <ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options'>
+                    <!-- marker -->
+                    <ui-gmap-marker coords="map.marker.coords" idkey="map.marker.id"></ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+            
+        </div>
+    </div>
+</div>

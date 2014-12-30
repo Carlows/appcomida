@@ -1,4 +1,4 @@
-﻿var app = angular.module('mainApp', ['ngRoute', 'uiGmapgoogle-maps'])
+﻿var app = angular.module('mainApp', ['ngRoute', 'uiGmapgoogle-maps', 'ngAnimate'])
 
 app.constant("serverURL", "http://localhost:57916/Registros")
 
@@ -16,7 +16,7 @@ app.config(function ($routeProvider, $locationProvider) {
         })
         .when("/registro/:registroID", {
             controller: "RegistroController",
-            templateUrl: "ViewsAngular/product.html"
+            templateUrl: "ViewsAngular/producto.html"
         })
         .otherwise({
             redirectTo: "/"
