@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using app.Providers;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(app.Startup))]

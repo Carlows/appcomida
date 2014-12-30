@@ -13,6 +13,9 @@ namespace app
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Enables MVC attribute routing.
+            routes.MapMvcAttributeRoutes();
+
             //exclude template folder from routing
             routes.IgnoreRoute("ViewsAngular/{*pathInfo}");
 
@@ -20,7 +23,7 @@ namespace app
                 name: "",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "App", action = "Index", id = UrlParameter.Optional} ,
-                constraints: new { controller = "App|Registros" }
+                constraints: new { controller = "App|Registros|Account" }
             );
 
             routes.MapRoute(

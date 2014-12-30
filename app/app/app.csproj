@@ -200,6 +200,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\Repositories\AuthRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\IAuthRepository.cs" />
     <Compile Include="Infrastructure\Repositories\IRegistroRepository.cs" />
     <Compile Include="Infrastructure\Repositories\RegistroRepository.cs" />
     <Compile Include="Infrastructure\Services\IRegistroService.cs" />
@@ -211,6 +213,7 @@
     <Compile Include="Models\Entities\Registro.cs" />
     <Compile Include="Models\ViewModels\RegistroViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -25,6 +25,7 @@ namespace app.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         public JsonResult GetRecord(int? id)
         {
             if(id == null)

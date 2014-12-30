@@ -8,6 +8,7 @@ using Ninject.Web.Common;
 using app.Models;
 using app.Infrastructure.Repositories;
 using app.Infrastructure.Services;
+using app.Providers;
 
 namespace app.Infrastructure
 {
@@ -42,6 +43,8 @@ namespace app.Infrastructure
             kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
             kernel.Bind<IRegistroRepository>().To<RegistroRepository>().InRequestScope();
             kernel.Bind<IRegistroService>().To<RegistroService>().InRequestScope();
+            kernel.Bind<IAuthRepository>().To<AuthRepository>().InRequestScope();
+            kernel.Bind<SimpleAuthorizationServerProvider>().ToSelf();
         }
     }
 }
