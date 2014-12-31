@@ -49,6 +49,24 @@ namespace app.Controllers
             return Json(new { success = "Fuiste registrado correctamente" });
         }
 
+        public ActionResult GetUserID()
+        {
+            ClaimsPrincipal principal = (ClaimsPrincipal)User;
+
+            var name = principal.Claims.Where(c => c.Type == "sub").Single().Value;
+
+            var user = _repo.FindUserByName(name);
+
+            if (user == null)
+            {
+                // swag
+                Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                return Json(new { error = "No existe el usuario" }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(user.Id, JsonRequestBehavior.AllowGet);
+        }
+
         private HttpStatusCode? GetErrorResult(IdentityResult result)
         {
             if (result == null)

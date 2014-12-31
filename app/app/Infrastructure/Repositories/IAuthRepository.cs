@@ -12,5 +12,6 @@ namespace app.Infrastructure.Repositories
     {
         Task<IdentityResult> RegisterUser(RegisterViewModel userModel);
         Task<ApplicationUser> FindUser(string userName, string password);
+        Task<ApplicationUser> FindUserByName(string userName);
     }
 }

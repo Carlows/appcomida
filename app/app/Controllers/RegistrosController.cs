@@ -4,17 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Http;
+using System.Web.Routing;
+using app.Infrastructure.Repositories;
+
 
 namespace app.Controllers
 {
     public class RegistrosController : Controller
-    {        
+    {
         public readonly IRegistroService _registros;
+        public readonly IAuthRepository _authrepo;
 
-        public RegistrosController(IRegistroService registrosService)
+        public RegistrosController(IRegistroService registrosService, IAuthRepository authRepo)
         {
+            this._authrepo = authRepo;
             _registros = registrosService;
         }
 
@@ -25,9 +32,8 @@ namespace app.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
-        [Authorize]
         public JsonResult GetRecord(int? id)
-        {
+        {       
             if(id == null)
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;

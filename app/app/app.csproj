@@ -228,19 +228,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\angular-local-storage.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\Controllers\LoginController.js" />
     <Content Include="Scripts\app\Controllers\mainController.js" />
     <Content Include="Scripts\app\Controllers\NuevoRegistroController.js" />
     <Content Include="Scripts\app\Controllers\RegistroController.js" />
     <Content Include="Scripts\app\Controllers\RegistrosController.js" />
+    <Content Include="Scripts\app\Controllers\SignupController.js" />
     <Content Include="Scripts\app\Filters\bolivares.js" />
     <Content Include="Scripts\app\Filters\regulado.js" />
     <Content Include="Scripts\app\productos.html" />
+    <Content Include="Scripts\app\Services\AuthInterceptorService.js" />
+    <Content Include="Scripts\app\Services\AuthService.js" />
     <Content Include="Scripts\app\Services\HelperService.js" />
     <Content Include="Scripts\app\Services\RegistrosService.js" />
     <Content Include="Scripts\vendor\angular-google-maps.js" />
-    <Content Include="Scripts\vendor\fbcomments.js" />
+    <Content Include="Scripts\angular-local-storage.js" />
     <Content Include="Scripts\vendor\lodash.js" />
+    <Content Include="ViewsAngular\login.html" />
     <Content Include="ViewsAngular\NuevoProducto\paso1.html" />
     <Content Include="ViewsAngular\NuevoProducto\paso2.html" />
     <Content Include="ViewsAngular\NuevoProducto\paso3.html" />
@@ -264,6 +270,7 @@
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="ViewsAngular\registro.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -40,6 +40,13 @@ namespace app.Infrastructure.Repositories
             return user;
         }
 
+        public async Task<ApplicationUser> FindUserByName(string userName)
+        {
+            ApplicationUser user = await _userManager.FindByNameAsync(userName);
+
+            return user;
+        }
+
         public void Dispose()
         {
             _db.Dispose();
