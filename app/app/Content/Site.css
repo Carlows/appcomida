@@ -15,6 +15,37 @@
     margin-bottom:5px;
 }
 
+.nombreproducto{
+    font-size:20px;
+}
+
+.votosproducto{
+    font-size:22px;
+}
+
+.votosvotador{
+    cursor: pointer;
+}
+
+.votosproductovotos{
+    font-size:30px;
+}
+
+.votosproductomargen{
+    margin: 0;
+}
+
+.direccionproducto, .precioproducto{
+    font-size:16px;
+}
+.precioproducto, .nombreproducto{
+    margin-bottom:0px;
+}
+
+.mapa{
+    margin-top:25px;
+}
+
 .productoVotos{
     font-size:28px;
     color: #4a6b82;

@@ -8,7 +8,7 @@
     </div>
     <div class="panel-body">
         <div class="container-fluid">
-            <form class="form-horizontal" role="form">
+            <form name="registroform" novalidate class="form-horizontal" role="form">
                 <fieldset>
                     <legend>Registro</legend>
 
@@ -24,7 +24,7 @@
                         <input type="password" class="form-control" placeholder="Confirmar contraseña" data-ng-model="registration.confirmPassword" required>
 
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" data-ng-click="signUp()">Enviar</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" data-ng-click="signUp()" ng-disabled="registroform.$invalid">Enviar</button>
                 </fieldset>
             </form>
         </div>        

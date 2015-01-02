@@ -1,9 +1,11 @@
 ﻿var app = angular.module('mainApp');
 
-app.controller('RegistroController', function ($scope, $routeParams, uiGmapGoogleMapApi, registrosService) {
+app.controller('RegistroController', function ($scope, $routeParams, $timeout, uiGmapGoogleMapApi, registrosService) {
     function init() {
         var recordsPromise = registrosService.getRecord($routeParams.registroID);
         $scope.loadingContent = true;
+        $scope.mapLoaded = false;
+
         $scope.data = {
             record: {}
         };
@@ -21,7 +23,6 @@ app.controller('RegistroController', function ($scope, $routeParams, uiGmapGoogl
 
         recordsPromise.then(function (datos) {
             $scope.data.record = datos.data;
-            $scope.loadingContent = false;
 
             if (datos.data.Producto.Regulado) {
                 $scope.regulado = true;
@@ -42,6 +43,12 @@ app.controller('RegistroController', function ($scope, $routeParams, uiGmapGoogl
                     }
                 }
             };
+
+            $timeout(function () {
+                $scope.mapLoaded = true;
+            }, 1000);
+
+            $scope.loadingContent = false;
         }, function (error) {
             $scope.data.error = error;
             $scope.loadingContent = false;

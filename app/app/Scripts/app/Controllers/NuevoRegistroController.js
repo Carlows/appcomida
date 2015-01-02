@@ -1,10 +1,14 @@
 ﻿var app = angular.module('mainApp');
 
-app.controller("NuevoRegistroController", function ($scope, $location, registrosService, helperService, uiGmapGoogleMapApi, $log) {
+app.controller("NuevoRegistroController", function ($scope, $location, registrosService, helperService, uiGmapGoogleMapApi, $log, authService) {
 
     init();
 
     function init() {
+        if (!authService.authentication.isAuth) {
+            $location.path("/login");
+        }
+
         $scope.data = {};
         $scope.currentStep = 1;
         $scope.currentData = {};

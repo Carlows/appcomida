@@ -6,29 +6,28 @@
     <div class="panel-body">
         <div class="well text-center" style="margin-bottom: 0px;" ng-show="loadingContent"><strong>Cargando contenido...</strong></div>        
 
-        <div class="row">
-            <div class="col-xs-3">
-                <span class="recordVotos">{{data.record.Votos}}</span>
-            </div>
-            <div class="col-xs-4 text-center">
-                <p><strong>{{data.record.Direccion.Estado}}</strong> <span>{{data.record.Direccion.Ciudad}}</span></p>
-            </div>
-            <div class="col-xs-5 text-right">
-                <div class="">
-                    <span class="recordPrecio">{{data.record.Producto.Precio | bolivares}}</span>
+        <div class="row text-justify">
+            <div class="container-fluid">
+                <div class="col-xs-2 votosproducto text-center">
+                    <p class="glyphicon glyphicon-chevron-up votosproductomargen votosvotador" aria-hidden="true"></p>
+                    <p class="votosproductovotos votosproductomargen">{{data.record.Votos}}</p>
+                    <p class="glyphicon glyphicon-chevron-down votosproductomargen votosvotador" aria-hidden="true"></p>
                 </div>
-                <div class="">
-                    <label class="label" ng-class="{ 'label-success': regulado, 'label-danger': noRegulado }">{{data.record.Producto.Regulado | regulado}}</label>
+                <div class="col-xs-10">
+                    <p class="nombreproducto"><strong>{{data.record.Producto.Nombre}}</strong></p>
+                    <p><strong>{{data.record.Direccion.Estado}}</strong> - <span>{{data.record.Direccion.Ciudad}}</span></p>
+                    <p>{{data.record.Direccion.DireccionLocal}}</p>
                 </div>
             </div>
         </div>
         <div class="row text-justify">
-            <div class="container-fluid">
-                <p><strong>{{data.record.Producto.Nombre}}</strong></p>
-                <p>{{data.record.Direccion.DireccionLocal}}</p>
+            <div class="container-fluid text-right">
+                    <p class="precioproducto"><strong>{{data.record.Producto.Precio | bolivares}}</strong></p>
+                    <p class="label" ng-class="{ 'label-success': regulado, 'label-danger': noRegulado }">{{data.record.Producto.Regulado | regulado}}</p>
+                
             </div>
         </div>
-        <div class="row">
+        <div class="row mapa" ng-if="mapLoaded">
             <div class="container-fluid">
                 <ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options'>
                     <!-- marker -->
