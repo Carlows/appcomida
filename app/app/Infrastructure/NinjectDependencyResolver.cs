@@ -44,6 +44,7 @@ namespace app.Infrastructure
             kernel.Bind<IRegistroRepository>().To<RegistroRepository>().InRequestScope();
             kernel.Bind<IRegistroService>().To<RegistroService>().InRequestScope();
             kernel.Bind<IAuthRepository>().To<AuthRepository>().InRequestScope();
+            kernel.Bind<IVotoRepository>().To<VotoRepository>().InRequestScope();
             kernel.Bind<SimpleAuthorizationServerProvider>().ToSelf();
         }
     }

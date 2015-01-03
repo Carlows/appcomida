@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using System.Net.Http;
 using System.Web.Routing;
 using app.Infrastructure.Repositories;
+using System.Threading.Tasks;
 
 
 namespace app.Controllers
@@ -62,6 +63,7 @@ namespace app.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public JsonResult CreateRecord(RegistroViewModel model)
         {
             if (ModelState.IsValid) 
@@ -82,6 +84,41 @@ namespace app.Controllers
             // return error
             Response.StatusCode = (int)HttpStatusCode.BadRequest; 
             return Json(new { error = "Hubo un error al agregar el registro" });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<JsonResult> VoteRecord(int registroID, bool vote)
+        {
+            try
+            {
+                await _registros.AddOrUpdateVote(registroID, GetUserName(), vote);
+
+                var registro = _registros.FindRecordById(registroID);
+
+                var model = registro.VoteCount;
+
+                return Json(new { count = model });
+            }
+            catch(KeyNotFoundException e)
+            {
+                Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                return Json(new { error = "Usuario no encontrado" });
+            }
+            catch(Exception e)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { error = "Hubo un error al agregar el registro: " + e.Message });
+            }
+        }
+
+        private string GetUserName()
+        {
+            ClaimsPrincipal principal = (ClaimsPrincipal)User;
+
+            var name = principal.Claims.Where(c => c.Type == "sub").Single().Value;
+
+            return name;
         }
 	}
 }

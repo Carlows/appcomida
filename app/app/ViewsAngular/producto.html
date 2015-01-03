@@ -9,9 +9,9 @@
         <div class="row text-justify">
             <div class="container-fluid">
                 <div class="col-xs-2 votosproducto text-center">
-                    <p class="glyphicon glyphicon-chevron-up votosproductomargen votosvotador" aria-hidden="true"></p>
-                    <p class="votosproductovotos votosproductomargen">{{data.record.Votos}}</p>
-                    <p class="glyphicon glyphicon-chevron-down votosproductomargen votosvotador" aria-hidden="true"></p>
+                    <p class="glyphicon glyphicon-chevron-up votosproductomargen votosvotador" aria-hidden="true" ng-click="voteUp(data.record.Id)"></p>
+                    <p class="votosproductovotos votosproductomargen">{{data.record.VoteCount}}</p>
+                    <p class="glyphicon glyphicon-chevron-down votosproductomargen votosvotador" aria-hidden="true" ng-click="voteDown(data.record.Id)"></p>
                 </div>
                 <div class="col-xs-10">
                     <p class="nombreproducto"><strong>{{data.record.Producto.Nombre}}</strong></p>

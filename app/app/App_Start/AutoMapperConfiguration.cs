@@ -20,6 +20,7 @@ namespace app.App_Start
             Mapper.CreateMap<RegistroViewModel, Registro>().ReverseMap();
             Mapper.CreateMap<ProductoViewModel, Producto>().ReverseMap();
             Mapper.CreateMap<DireccionViewModel, Direccion>().ReverseMap();
+            Mapper.CreateMap<VotoViewModel, Voto>().ReverseMap();
         } 
     }
 }

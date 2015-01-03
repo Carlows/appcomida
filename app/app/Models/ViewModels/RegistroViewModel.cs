@@ -12,6 +12,7 @@ namespace app.Models.ViewModels
         public int Id { get; set; }
         public ProductoViewModel Producto { get; set; }
         public DireccionViewModel Direccion { get; set; }
+        public int VoteCount { get; set; }
     }
 
     public class ProductoViewModel
@@ -35,5 +36,11 @@ namespace app.Models.ViewModels
         public string Local { get; set; }
         [Required]
         public GoogleMapPoint Position { get; set; }
+    }
+
+    public class VotoViewModel
+    {
+        [Required]
+        public VoteType Resultado { get; set; }
     }
 }

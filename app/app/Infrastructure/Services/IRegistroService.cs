@@ -11,15 +11,16 @@ namespace app.Infrastructure.Services
 {
     public interface IRegistroService
     {
-        IEnumerable<Registro> GetAllRecords();
-        IEnumerable<Registro> GetRecordsDescending();
-        Registro FindRecordById(int? id);
-        IEnumerable<Registro> FindRecordsByCity(string city);
-        IEnumerable<Registro> FindRecordsByState(string state);
-        IEnumerable<Registro> FindRecordsByDay(DateTime day);
-        IEnumerable<Registro> FindRecordsBy(Expression<Func<Registro, bool>> predicate);
-        Registro CreateRecord(RegistroViewModel model);
-        Registro UpdateRecord(RegistroViewModel model);
+        IEnumerable<RegistroViewModel> GetAllRecords();
+        IEnumerable<RegistroViewModel> GetRecordsDescending();
+        RegistroViewModel FindRecordById(int? id);
+        IEnumerable<RegistroViewModel> FindRecordsByCity(string city);
+        IEnumerable<RegistroViewModel> FindRecordsByState(string state);
+        IEnumerable<RegistroViewModel> FindRecordsByDay(DateTime day);
+        IEnumerable<RegistroViewModel> FindRecordsBy(Expression<Func<Registro, bool>> predicate);
+        RegistroViewModel CreateRecord(RegistroViewModel model);
+        RegistroViewModel UpdateRecord(RegistroViewModel model);
+        Task<Voto> AddOrUpdateVote(int registroID, string userID, bool typeofvote);
         bool DeleteRecord(int? id);
     }
 }

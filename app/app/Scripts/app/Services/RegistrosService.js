@@ -38,6 +38,22 @@ app.factory("registrosService", function ($http, $q, serverURL) {
             }
 
             return deferred.promise;
+        },
+        voteOnRecord: function (recordID, vote) {
+            var deferred = $q.defer();
+
+            var data = {
+                registroID: recordID,
+                vote: vote
+            };
+
+            $http.post(serverURL + "/VoteRecord", data).then(function (data) {
+                deferred.resolve(data);
+            }, function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
         }
     }
 });

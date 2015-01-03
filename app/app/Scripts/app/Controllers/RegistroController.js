@@ -1,6 +1,8 @@
 ﻿var app = angular.module('mainApp');
 
 app.controller('RegistroController', function ($scope, $routeParams, $timeout, uiGmapGoogleMapApi, registrosService) {
+    init();
+
     function init() {
         var recordsPromise = registrosService.getRecord($routeParams.registroID);
         $scope.loadingContent = true;
@@ -54,6 +56,16 @@ app.controller('RegistroController', function ($scope, $routeParams, $timeout, u
             $scope.loadingContent = false;
         });
     };
+    
+    $scope.voteUp = function (id) {
+        registrosService.voteOnRecord(id, true).then(function (votes) {
+            $scope.data.record.VoteCount = votes.data.count;
+        });
+    };
 
-    init();
+    $scope.voteDown = function (id) {
+        registrosService.voteOnRecord(id, false).then(function (votes) {
+            $scope.data.record.VoteCount = votes.data.count;
+        });
+    };
 });
