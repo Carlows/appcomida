@@ -1,4 +1,5 @@
 ﻿using app.Models.Entities;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -65,6 +66,12 @@ namespace app.Models
 
             foreach (Registro p in registros)
                 db.Registros.Add(p);
+
+            var store = new UserStore<ApplicationUser>(db);
+            var manager = new UserManager<ApplicationUser>(store);
+            var user = new ApplicationUser { UserName = "admin" };
+
+            manager.Create(user, "admin12");
 
             base.Seed(db);
         }

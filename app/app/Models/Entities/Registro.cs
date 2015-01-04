@@ -12,6 +12,7 @@ namespace app.Models.Entities
         public Registro()
         {
             Creado = DateTime.Now;
+            Votos = new List<Voto>();
         }
 
         [Key]
