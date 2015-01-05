@@ -38,7 +38,7 @@ namespace app.Models
 
     }
 
-    public class AppInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class AppInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext db)
         {
