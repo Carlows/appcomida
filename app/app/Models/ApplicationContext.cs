@@ -17,7 +17,7 @@ namespace app.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
-            Database.SetInitializer<ApplicationDbContext>(new AppInitializer());
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public DbSet<Registro> Registros { get; set; }
