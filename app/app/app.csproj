@@ -209,6 +209,11 @@
     <Compile Include="Infrastructure\Repositories\VotoRepository.cs" />
     <Compile Include="Infrastructure\Services\IRegistroService.cs" />
     <Compile Include="Infrastructure\Services\RegistroService.cs" />
+    <Compile Include="Migrations\201501052150064_seed.cs" />
+    <Compile Include="Migrations\201501052150064_seed.Designer.cs">
+      <DependentUpon>201501052150064_seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
     <Compile Include="Models\Entities\Direccion.cs" />
@@ -294,6 +299,11 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201501052150064_seed.resx">
+      <DependentUpon>201501052150064_seed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
