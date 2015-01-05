@@ -18,7 +18,7 @@ namespace app.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
-            Database.SetInitializer<ApplicationDbContext>(new AppInitializer());
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public DbSet<Registro> Registros { get; set; }
@@ -39,7 +39,7 @@ namespace app.Models
 
     }
 
-    public class AppInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    public class AppInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext db)
         {
