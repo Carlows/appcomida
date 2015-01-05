@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace app.Models
 {
@@ -17,7 +18,7 @@ namespace app.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
-            Database.SetInitializer<ApplicationDbContext>(null);
+            Database.SetInitializer<ApplicationDbContext>(new AppInitializer());
         }
 
         public DbSet<Registro> Registros { get; set; }

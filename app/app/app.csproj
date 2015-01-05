@@ -209,9 +209,9 @@
     <Compile Include="Infrastructure\Repositories\VotoRepository.cs" />
     <Compile Include="Infrastructure\Services\IRegistroService.cs" />
     <Compile Include="Infrastructure\Services\RegistroService.cs" />
-    <Compile Include="Migrations\201501052150064_seed.cs" />
-    <Compile Include="Migrations\201501052150064_seed.Designer.cs">
-      <DependentUpon>201501052150064_seed.cs</DependentUpon>
+    <Compile Include="Migrations\201501052222332_asd.cs" />
+    <Compile Include="Migrations\201501052222332_asd.Designer.cs">
+      <DependentUpon>201501052222332_asd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,7 +281,9 @@
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Scripts\npm.js" />
     <Content Include="ViewsAngular\registro.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -301,8 +303,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201501052150064_seed.resx">
-      <DependentUpon>201501052150064_seed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501052222332_asd.resx">
+      <DependentUpon>201501052222332_asd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

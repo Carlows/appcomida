@@ -37,7 +37,7 @@ namespace app.Controllers
             }
             catch(Exception e)
             {
-                new LogEvent(e.Message + e.InnerException + e.StackTrace).Raise();
+                new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
 
                 Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 return Json(new { error = e.Message }, JsonRequestBehavior.AllowGet);
