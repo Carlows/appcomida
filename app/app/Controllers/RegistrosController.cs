@@ -68,8 +68,6 @@ namespace app.Controllers
             }
             catch(Exception e)
             {
-                new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
-
                 Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 return Json(new { error = "Hubo un error al encontrar el registro: " + e.Message }, JsonRequestBehavior.AllowGet);
             }
@@ -89,8 +87,6 @@ namespace app.Controllers
                 }
                 catch(Exception e)
                 {
-                    new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
-
                     Response.StatusCode = (int)HttpStatusCode.InternalServerError; 
                     return Json(new { error = "Hubo un error al agregar el registro: " + e.Message });
                 }
@@ -122,8 +118,6 @@ namespace app.Controllers
             }
             catch(Exception e)
             {
-                new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
-
                 Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 return Json(new { error = "Hubo un error al agregar el registro: " + e.Message });
             }

@@ -15,6 +15,7 @@ namespace app.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            ContextKey = "app.Models.ApplicationDbContext";
         }
 
         protected override void Seed(app.Models.ApplicationDbContext context)
