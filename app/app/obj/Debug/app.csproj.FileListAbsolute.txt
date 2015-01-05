@@ -82,5 +82,6 @@ E:\Github Projects\appcomida\app\app\bin\es\System.Web.WebPages.Razor.resources.
 E:\Github Projects\appcomida\app\app\obj\Debug\app.csprojResolveAssemblyReference.cache
 E:\Github Projects\appcomida\app\app\obj\Debug\app.dll
 E:\Github Projects\appcomida\app\app\obj\Debug\app.pdb
-E:\Github Projects\appcomida\app\app\obj\Debug\app.Migrations.asd.resources
+E:\Github Projects\appcomida\app\app\obj\Debug\app.Migrations.Initial.resources
 E:\Github Projects\appcomida\app\app\obj\Debug\app.csproj.GenerateResource.Cache
+E:\Github Projects\appcomida\app\app\obj\Debug\app.Migrations.second.resources

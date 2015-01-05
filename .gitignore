@@ -1,4 +1,5 @@
 app/packages/
 app/app/bin/
+app/app/App_Data/
 *.dll
 *.pdb
