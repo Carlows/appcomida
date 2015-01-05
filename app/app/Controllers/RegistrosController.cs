@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Web.Routing;
 using app.Infrastructure.Repositories;
 using System.Threading.Tasks;
+using app.Infrastructure.Logging;
 
 
 namespace app.Controllers
@@ -28,9 +29,19 @@ namespace app.Controllers
 
         public JsonResult GetAllRecords()
         {
-            var model = _registros.GetRecordsDescending();
+            try
+            {
+                var model = _registros.GetRecordsDescending();
 
-            return Json(model, JsonRequestBehavior.AllowGet);
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                new LogEvent(e.Message + e.InnerException + e.StackTrace).Raise();
+
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { error = e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult GetRecord(int? id)
