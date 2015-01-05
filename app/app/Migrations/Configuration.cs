@@ -15,6 +15,7 @@ namespace app.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(app.Models.ApplicationDbContext context)

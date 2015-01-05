@@ -1,4 +1,5 @@
-﻿using app.Models.Entities;
+﻿using app.Migrations;
+using app.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ namespace app.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
-            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public DbSet<Registro> Registros { get; set; }
@@ -26,6 +26,8 @@ namespace app.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+
             modelBuilder.Entity<Registro>()
                 .HasRequired(x => x.Producto)
                 .WithRequiredPrincipal();

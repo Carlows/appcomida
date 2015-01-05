@@ -20,7 +20,6 @@ namespace app.Models.Entities
         public string Ciudad { get; set; }
         public string DireccionLocal { get; set; }
         public string Local { get; set; }           // Nombre del local
-        public string MasInfo { get; set; }
         public GoogleMapPoint Position { get; set; }
     }
 
