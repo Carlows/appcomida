@@ -29,40 +29,59 @@ namespace app.Controllers
 
         public JsonResult GetAllRecords()
         {
-            throw new Exception("oh noes!");
-            var model = _registros.GetRecordsDescending();
-            return Json(model, JsonRequestBehavior.AllowGet);
+            try
+            {
+                throw new Exception("oh noes!");
+                var model = _registros.GetRecordsDescending();
+
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
+
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { error = e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         //public JsonResult FindRecord(string query, string state)
         //{
-        //    //if (String.IsNullOrWhiteSpace(query))
-        //    //{
-        //    //    Response.StatusCode = (int)HttpStatusCode.BadRequest;
-        //    //    return Json(new { error = "Datos invalidos" }, JsonRequestBehavior.AllowGet);
-        //    //}
-
-
+        //    if(String.IsNullOrWhiteSpace(query))
+        //    {
+        //        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        //        return Json(new { error = "Datos invalidos" }, JsonRequestBehavior.AllowGet);
+        //    }
         //}
 
         public JsonResult GetRecord(int? id)
-        {
-            if (id == null)
+        {       
+            if(id == null)
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { error = "Id es null" }, JsonRequestBehavior.AllowGet);
             }
 
-            var record = _registros.FindRecordById(id);
+            try
+            {
+                var record = _registros.FindRecordById(id);
 
-            if (record != null)
-            {
-                return Json(record, JsonRequestBehavior.AllowGet);
+                if(record != null)
+                {
+                    return Json(record, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    return Json(new { error = "No se pudo encontrar el producto" }, JsonRequestBehavior.AllowGet);
+                }
             }
-            else
+            catch(Exception e)
             {
-                Response.StatusCode = (int)HttpStatusCode.NotFound;
-                return Json(new { error = "No se pudo encontrar el producto" }, JsonRequestBehavior.AllowGet);
+                new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
+
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { error = "Hubo un error al encontrar el registro: " + e.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -70,15 +89,25 @@ namespace app.Controllers
         [Authorize]
         public JsonResult CreateRecord(RegistroViewModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
-                var registro = _registros.CreateRecord(model);
+                try
+                {
+                    var registro = _registros.CreateRecord(model);
 
-                return Json(registro);
+                    return Json(registro);
+                }
+                catch(Exception e)
+                {
+                    new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
+
+                    Response.StatusCode = (int)HttpStatusCode.InternalServerError; 
+                    return Json(new { error = "Hubo un error al agregar el registro: " + e.Message });
+                }
             }
 
             // return error
-            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            Response.StatusCode = (int)HttpStatusCode.BadRequest; 
             return Json(new { error = "Hubo un error al agregar el registro" });
         }
 
@@ -86,13 +115,28 @@ namespace app.Controllers
         [Authorize]
         public async Task<JsonResult> VoteRecord(int registroID, bool vote)
         {
-            await _registros.AddOrUpdateVote(registroID, GetUserName(), vote);
+            try
+            {
+                await _registros.AddOrUpdateVote(registroID, GetUserName(), vote);
 
-            var registro = _registros.FindRecordById(registroID);
+                var registro = _registros.FindRecordById(registroID);
 
-            var model = registro.VoteCount;
+                var model = registro.VoteCount;
 
-            return Json(new { count = model });
+                return Json(new { count = model });
+            }
+            catch(KeyNotFoundException e)
+            {
+                Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                return Json(new { error = "Usuario no encontrado" });
+            }
+            catch(Exception e)
+            {
+                new LogEvent("Message" + e.Message + " InnerException: " + e.InnerException + " Trace: " + e.StackTrace).Raise();
+
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { error = "Hubo un error al agregar el registro: " + e.Message });
+            }
         }
 
         private string GetUserName()
@@ -103,5 +147,5 @@ namespace app.Controllers
 
             return name;
         }
-    }
+	}
 }
