@@ -1,6 +1,6 @@
 ﻿var app = angular.module('mainApp');
 
-app.controller('RegistrosController', function ($scope, $http, registrosService) {
+app.controller('RegistrosController', function ($scope, $http, registrosService, helperService) {
 
     init();
     
@@ -15,6 +15,12 @@ app.controller('RegistrosController', function ($scope, $http, registrosService)
             $scope.data.error = error;
             $scope.loadingContent = false;
         });
+    };
+
+    $scope.estados = helperService.getAllStates();
+
+    $scope.searchFn = function (query) {
+        alert(query.Busqueda + " " + query.Estado.name);
     };
 
     $scope.data = {};

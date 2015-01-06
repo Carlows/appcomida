@@ -2,6 +2,24 @@
     Error ({{data.error.data.error}}). No se pudieron cargar los datos.
 </div>
 
+<div class="panel">
+    <div class="panel-body">
+        <div class="col-xs-8">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Busca un producto" ng-model="search.Busqueda" />
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" ng-click="searchFn(search)">Buscar</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <select class="form-control" required ng-model="search.Estado" ng-options="item.name for item in estados">
+                <option value="">Estado</option>
+            </select>
+        </div>
+    </div>
+</div>
+
 <div class="panel panel-primary" ng-hide="data.error">
     <div class="panel-heading">
         <strong>Agregados recientemente</strong>

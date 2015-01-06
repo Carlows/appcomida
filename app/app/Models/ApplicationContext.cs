@@ -41,6 +41,7 @@ namespace app.Models
 
     }
 
+    /*
     public class AppInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext db)
@@ -79,4 +80,5 @@ namespace app.Models
             base.Seed(db);
         }
     }
+     * */
 }

@@ -24,7 +24,7 @@
                 <li ng-class="{ active: isActive('/') }"><a href="/">Inicio</a></li>
                 <li ng-show="authentication.isAuth" ng-class="{ active: isActive('/nuevoRegistro') }"><a href="/nuevoRegistro">Encontré una cola</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" ng-cloak>
                 <li ng-show="authentication.isAuth">
                     <a href="#">Bienvenido, {{authentication.userName}}</a>
                 </li>

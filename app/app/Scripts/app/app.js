@@ -1,7 +1,7 @@
 ﻿var app = angular.module('mainApp', ['ngRoute', 'uiGmapgoogle-maps', 'ngAnimate', 'LocalStorageModule'])
 
-app.constant("serverBase", "http://appcomida.apphb.com/");
-app.constant("serverURL", "http://appcomida.apphb.com/Registros");
+app.constant("serverBase", "http://localhost:57916/");
+app.constant("serverURL", "http://localhost:57916/Registros");
 
 app.config(function ($routeProvider, $locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
