@@ -44,10 +44,10 @@ namespace app.Controllers
             }
         }
 
-        public JsonResult FindRecord(string query, string state)
+        public JsonResult FindRecords(string query, string state)
         {
             // if query is null, check if state is, and then perform a different action
-            if (String.IsNullOrWhiteSpace(query))
+            if (String.IsNullOrWhiteSpace(query) && String.IsNullOrWhiteSpace(state))
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { error = "Datos invalidos" }, JsonRequestBehavior.AllowGet);
@@ -57,13 +57,17 @@ namespace app.Controllers
             {
                 IEnumerable<RegistroViewModel> model;
 
-                if(String.IsNullOrEmpty(state))
+                if(String.IsNullOrWhiteSpace(query))
                 {
-                    model = _registros.FindRecordsBy(query);
+                    model = _registros.FindRecordsBy(r => r.Direccion.Estado.Equals(state));
+                }
+                else if(String.IsNullOrWhiteSpace(state))
+                {
+                    model = _registros.FindRecordsBy(r => r.Producto.Nombre.Contains(query));
                 }
                 else
                 {
-                    model = _registros.FindRecordsBy(query, state);
+                    model = _registros.FindRecordsBy(r => r.Producto.Nombre.Contains(query) && r.Direccion.Estado.Equals(state));
                 }
 
                 return Json(model, JsonRequestBehavior.AllowGet);

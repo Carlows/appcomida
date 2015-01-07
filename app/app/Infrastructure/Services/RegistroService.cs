@@ -45,44 +45,15 @@ namespace app.Infrastructure.Services
             return model;
         }
 
-        public IEnumerable<RegistroViewModel> FindRecordsByCity(string city)
+        public IEnumerable<RegistroViewModel> FindRecordsBy(Expression<Func<Registro, bool>> predicate)
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<RegistroViewModel> FindRecordsByState(string state)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<RegistroViewModel> FindRecordsByDay(DateTime day)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<RegistroViewModel> FindRecordsBy(string query)
-        {
-            var returned = _db.GetAllBy(r => r.Producto.Nombre.Contains(query)).ToList();
+            var returned = _db.GetAllBy(predicate).ToList();
 
             var model = Mapper.Map<List<Registro>, List<RegistroViewModel>>(returned);
 
             return model;
         }
-
-        public IEnumerable<RegistroViewModel> FindRecordsBy(string query, string state)
-        {        
-            if (String.IsNullOrEmpty(state))
-            {
-                throw new ArgumentNullException("City cannot be null.");
-            }
-
-            var returned = _db.GetAllBy(r => r.Producto.Nombre.Contains(query) && r.Direccion.Estado == state).ToList();            
-
-            var model = Mapper.Map<List<Registro>, List<RegistroViewModel>>(returned);
-
-            return model;
-        }
-
+        
         public RegistroViewModel CreateRecord(RegistroViewModel model)
         {
             Registro regMapper = Mapper.Map<RegistroViewModel, Registro>(model);

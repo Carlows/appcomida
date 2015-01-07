@@ -54,6 +54,19 @@ app.factory("registrosService", function ($http, $q, serverURL) {
             });
 
             return deferred.promise;
+        },
+        findRecords: function (query, state) {
+            var deferred = $q.defer();
+
+            var url = serverURL + "/FindRecords" + "?query=" + query + "&state=" + state;
+
+            $http.get(url).then(function (data) {
+                deferred.resolve(data);
+            }, function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
         }
     }
 });

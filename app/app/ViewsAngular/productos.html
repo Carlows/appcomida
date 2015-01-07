@@ -20,12 +20,13 @@
     </div>
 </div>
 
-<div class="panel panel-primary" ng-hide="data.error">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <strong>Agregados recientemente</strong>
     </div>
     <div class="panel-body">
         <div class="well text-center" style="margin-bottom: 0px;" ng-show="loadingContent"><strong>Cargando contenido...</strong></div>
+        <div class="well text-center" style="margin-bottom: 0px;" ng-show="emptyContent"><strong>No se encontró ningún producto</strong></div>
         <div class="texthidden" ng-repeat="registro in data.records">
             <div class="row box">
                 <div class="col-xs-2 text-center">
