@@ -20,6 +20,9 @@ namespace app.Migrations
 
         protected override void Seed(app.Models.ApplicationDbContext context)
         {
+            if (context.Registros.Count() > 0)
+                return;
+
             List<Registro> registros = new List<Registro>
             {
                 new Registro { Producto = new Producto { Nombre = "Harina Pan", Precio = 120, Regulado = false }, Direccion = new Direccion { Estado = "Carabobo", Ciudad = "Valencia", Local = "Farmatodo", DireccionLocal = "Sector 1 lorem ipsumSector 1 lorem ipsumSector 1 lorem ipsumSector 1 lorem ipsumSector 1 lorem ipsum", Position = new GoogleMapPoint { Latitud = 9.82743f, Longitud = -68.24695f } }},

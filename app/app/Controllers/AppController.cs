@@ -14,5 +14,11 @@ namespace app.Controllers
         {
             return View();
         }
+
+        public ActionResult Error()
+        {
+            Exception exception = Server.GetLastError();
+            return Json(new { error = exception.Message }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

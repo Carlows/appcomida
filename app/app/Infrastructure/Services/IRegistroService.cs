@@ -17,7 +17,8 @@ namespace app.Infrastructure.Services
         IEnumerable<RegistroViewModel> FindRecordsByCity(string city);
         IEnumerable<RegistroViewModel> FindRecordsByState(string state);
         IEnumerable<RegistroViewModel> FindRecordsByDay(DateTime day);
-        IEnumerable<RegistroViewModel> FindRecordsBy(Expression<Func<Registro, bool>> predicate);
+        IEnumerable<RegistroViewModel> FindRecordsBy(string query);
+        IEnumerable<RegistroViewModel> FindRecordsBy(string query, string state);
         RegistroViewModel CreateRecord(RegistroViewModel model);
         RegistroViewModel UpdateRecord(RegistroViewModel model);
         Task<Voto> AddOrUpdateVote(int registroID, string userID, bool typeofvote);

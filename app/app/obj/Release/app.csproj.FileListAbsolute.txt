@@ -84,3 +84,4 @@ E:\Github Projects\appcomida\app\app\obj\Release\app.Migrations.second.resources
 E:\Github Projects\appcomida\app\app\obj\Release\app.csproj.GenerateResource.Cache
 E:\Github Projects\appcomida\app\app\obj\Release\app.dll
 E:\Github Projects\appcomida\app\app\obj\Release\app.pdb
+E:\Github Projects\appcomida\app\app\obj\Release\app.csprojResolveAssemblyReference.cache

@@ -31,7 +31,6 @@ namespace app.Controllers
         {
             try
             {
-                throw new Exception("oh noes!");
                 var model = _registros.GetRecordsDescending();
 
                 return Json(model, JsonRequestBehavior.AllowGet);
@@ -45,14 +44,38 @@ namespace app.Controllers
             }
         }
 
-        //public JsonResult FindRecord(string query, string state)
-        //{
-        //    if(String.IsNullOrWhiteSpace(query))
-        //    {
-        //        Response.StatusCode = (int)HttpStatusCode.BadRequest;
-        //        return Json(new { error = "Datos invalidos" }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
+        public JsonResult FindRecord(string query, string state)
+        {
+            // if query is null, check if state is, and then perform a different action
+            if (String.IsNullOrWhiteSpace(query))
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { error = "Datos invalidos" }, JsonRequestBehavior.AllowGet);
+            }
+
+            try
+            {
+                IEnumerable<RegistroViewModel> model;
+
+                if(String.IsNullOrEmpty(state))
+                {
+                    model = _registros.FindRecordsBy(query);
+                }
+                else
+                {
+                    model = _registros.FindRecordsBy(query, state);
+                }
+
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                new LogEvent(e.Message).Raise();
+
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { error = e.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
 
         public JsonResult GetRecord(int? id)
         {       

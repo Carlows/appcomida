@@ -60,9 +60,27 @@ namespace app.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<RegistroViewModel> FindRecordsBy(Expression<Func<Registro, bool>> predicate)
+        public IEnumerable<RegistroViewModel> FindRecordsBy(string query)
         {
-            throw new NotImplementedException();
+            var returned = _db.GetAllBy(r => r.Producto.Nombre.Contains(query)).ToList();
+
+            var model = Mapper.Map<List<Registro>, List<RegistroViewModel>>(returned);
+
+            return model;
+        }
+
+        public IEnumerable<RegistroViewModel> FindRecordsBy(string query, string state)
+        {        
+            if (String.IsNullOrEmpty(state))
+            {
+                throw new ArgumentNullException("City cannot be null.");
+            }
+
+            var returned = _db.GetAllBy(r => r.Producto.Nombre.Contains(query) && r.Direccion.Estado == state).ToList();            
+
+            var model = Mapper.Map<List<Registro>, List<RegistroViewModel>>(returned);
+
+            return model;
         }
 
         public RegistroViewModel CreateRecord(RegistroViewModel model)
