@@ -48,7 +48,7 @@ app.controller("NuevoRegistroController", function ($scope, $location, registros
     $scope.setStep = setStep;
     
     $scope.addNewRecord = function () {
-        $scope.currentData.Direccion.Estado = $scope.currentData.Direccion.Estado[0].name;
+        $scope.currentData.Direccion.Estado = $scope.currentData.Direccion.Estado.name;
 
         var recordPromise = registrosService.addNewRecord($scope.currentData);
 
